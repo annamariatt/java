@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GenereeriArvud</title>
+</head>
+<body>
+<input id="a">
+<button id="generateButton">Genereeri arvud</button>
+<input id="n">
+<button id="generateArrayButton">Tagasta x-ga edenev rida</button>
+<button id="decreasingArrayButton">Tagasta 0-ni kahanev rida</button>
+<table id="resultTable">
+</table>
+<script>
+    let generateButton = document.getElementById("generateButton");
+    generateButton.onclick = function () {
+        let a = document.getElementById("a");
+        let table = document.getElementById("resultTable");
+        table.innerHTML = "";
+        for (let i = 1; i <= a.value; i++) {
+            let newRow = document.createElement("tr");
+            table.appendChild(newRow);
+            let newCell = document.createElement("td");
+            newRow.appendChild(newCell);
+            newCell.innerHTML = i;
+        }
+    }
+    let generateArrayButton = document.getElementById("generateArrayButton");
+    generateArrayButton.onclick = function () {
+        let a = document.getElementById("a");
+        let n = document.getElementById("n");
+        let table = document.getElementById("resultTable");
+        table.innerHTML = "";
+        for (let i = 0; i < 100; i = i + Number(a.value))
+        {
+            let newRow = document.createElement("tr");
+            table.appendChild(newRow);
+            let newCell = document.createElement("td");
+            newRow.appendChild(newCell);
+            newCell.innerHTML = i + 1;
+        }
+
+    }
+    let decreasingArrayButton = document.getElementById("decreasingArrayButton");
+    decreasingArrayButton.onclick = function () {
+        let a = document.getElementById("n");
+        let table = document.getElementById("resultTable");
+        table.innerHTML = "";
+        if (a > 0) {
+            let newRow = document.createElement("tr");
+            table.appendChild(newRow);
+            let newCell = document.createElement("td");
+            newRow.appendChild(newCell);
+            newCell.innerHTML = i;
+        }
+
+    }
+</script>
+
+</body>
+</html>

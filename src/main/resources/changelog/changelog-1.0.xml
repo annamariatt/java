@@ -66,4 +66,5 @@
             <column name="to" type="Date"/>
         </createTable>
     </changeSet>
+
 </databaseChangeLog>

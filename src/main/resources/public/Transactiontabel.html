@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction</title>
+</head>
+<body>
+Kontonumber: <input id="kontonumber"/>
+<button id="getTransactionHistory">Kontoväljavõte</button>
+<div id="result"></div>
+<table id="resultTable">
+    <tr>
+        <th>loodud</th>
+        <th>kontonumber</th>
+        <th>summa</th>
+        <th>tüüp</th>
+    </tr>
+</table>
+
+<script>
+    let getTransactionHistory = document.getElementById("getTransactionHistory");
+    getTransactionHistory.onclick = function () {
+        let kontonumber = document.getElementById("kontonumber").value;
+        let url = "http://localhost:8080/pank2/transactionHistory?kontonumber=" + kontonumber;
+        fetch(url)
+            .then(result => result.json())
+            .then(function (response) {
+                let resultTable = document.getElementById("resultTable");
+                for (let i = 0; i < response.length; i++) {
+                    let row = document.createElement("tr");
+                    resultTable.appendChild(row);
+                    let cell1 = document.createElement("td")
+                    row.appendChild(cell1);
+                    cell1.innerHTML = response[i].created;
+                    let cell2 = document.createElement('td')
+                    row.append(cell2);
+                    cell2.innerText = response[i].kontonumber
+                }
+            });
+    }
+</script>
+</body>
+</html>

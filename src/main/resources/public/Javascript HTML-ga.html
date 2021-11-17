@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Javascript</title>
+</head>
+<body>
+<input id="a">
+<input id="b">
+<input id="d">
+<button id="liidaNupp">Liida</button>
+<button id="minButton">Min</button>
+<button id="maxButton">Max</button>
+<button id="absButton">Abs</button>
+<button id="isEvenButton">isEven</button>
+<button id="min3Button">min3</button>
+<button id="max3Button">max3</button>
+<input id="c" disabled>
+<script>
+    let myButton = document.getElementById("liidaNupp");
+    myButton.onclick = function () {
+        let elementA = document.getElementById("a");
+        let elementB = document.getElementById("b");
+        let elementC = document.getElementById("c");
+        elementC.value = Number(elementA.value) + Number(elementB.value);
+    }
+
+    let minButton = document.getElementById("minButton")
+    minButton.onclick = function () {
+        let elementA = document.getElementById("a");
+        let elementB = document.getElementById("b");
+        let elementC = document.getElementById("c");
+        if (Number(elementA.value) < Number(elementB.value)) {
+            elementC.value = Number(elementA.value);
+        } else {
+            elementC.value = Number(elementB.value);
+        }
+
+        let maxButton = document.getElementById("maxButton")
+        maxButton.onclick = function () {
+            let elementA = document.getElementById("a");
+            let elementB = document.getElementById("b");
+            let elementC = document.getElementById("c");
+            if (Number(elementA.value) > Number(elementB.value)) {
+                elementC.value = Number(elementA.value);
+            } else {
+                elementC.value = Number(elementB.value);
+            }
+
+            let absButton = document.getElementById("absButton")
+            absButton.onclick = function () {
+                let elementA = document.getElementById("a");
+                let elementC = document.getElementById("c");
+                if (Number(elementA.value) <= Number(0)) {
+                    elementC.value = Number(elementA.value * -1);
+                } else {
+                    elementA.value = Number(elementA.value);
+                }
+            }
+            let isEven = document.getElementById("isEven")
+            isEven.onclick = function () {
+                let elementA = document.getElementById("a");
+                let elementC = document.getElementById("c");
+                if (Number(elementA.value) % 2 == 0) {
+                    elementC.value = Number(elementA.value);
+                } else {
+                    elementC.value = Number(x);
+                }
+            }
+
+            let min3 = document.getElementById("min3")
+            min3.onclick = function () {
+                let elementA = document.getElementById("a");
+                let elementB = document.getElementById("b");
+                let elementD = document.getElementById("d");
+                let elementC = document.getElementById("c");
+                if (Number(elementA.value) <= Number(elementB.value) && Number(elementA.value) <= Number(elementC.value)) {
+                    elementC.value = Number(elementA.value);
+                } else if (Number(elementB.value) <= Number(elementA.value) && Number(elementB.value) <= Number(elementC.value)) {
+                    elementC.value = Number(elementB.value);
+                } else {
+                    elementC.value = Number(elementD.value);
+
+                }
+            }
+            let max3 = document.getElementById("max3")
+            max3.onclick = function () {
+                let elementA = document.getElementById("a");
+                let elementB = document.getElementById("b");
+                let elementD = document.getElementById("d");
+                let elementC = document.getElementById("c");
+                if (Number(elementA.value) >= Number(elementB.value) && Number(elementA.value) >= Number(elementC.value)) {
+                    elementC.value = Number(elementA.value);
+                } else if (Number(elementB.value) >= Number(elementA.value) && Number(elementB.value) >= Number(elementC.value)) {
+                    elementC.value = Number(elementB.value);
+                } else {
+                    elementC.value = Number(elementD.value);
+
+                }
+
+            }
+        }
+
+    }
+
+</script>
+</body>
+</html>

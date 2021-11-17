@@ -9,10 +9,13 @@ public class Lesson3Hard {
     // iga kord pärast kasutaja sisestatud täis arvu peab programm ütlema kas number oli suurem või väiksem
     // ja kasutaja peab saama uuesti arvata
     // numbri ära aramise korral peab programm välja trükkima mitu katset läks numbri ära arvamiseks
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        yl1();
         Random random = new Random();
-        int i = random.nextInt(100);
-        System.out.println(i);
+        int randomNumber = random.nextInt(100);
+        System.out.println(randomNumber);
+        int count = 0;
+
 
         // TODO 1 tehke lõputu while tsükkel
         // TODO 2 tsükli sees küsige scanneri abil kasutaja käes 1 täisarv (int)
@@ -23,6 +26,27 @@ public class Lesson3Hard {
         // TODO 6 iga kord kui tsükkel tööle läheb suurenda counti 1 võrra
         // TODO 7 juhul kui tsükkel saab läbi (kasutaja arvas numbri ära) Trüki count välja
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Sisesta number 0st 99ni");
+        while (true) {
+            int insertedNumber = scanner.nextInt();
+            if (insertedNumber > randomNumber) {
+                System.out.println("sisestatud number oli liiga suur");
+            } else if (insertedNumber < randomNumber ) {
+                System.out.println("sisestatud number oli liiga väike");
+            } else {
+                System.out.println("Tubli, arvasid ära!");
+                System.out.println("Sul läks " + count + "korda");
+            }
+        }
 
     }
+
+    public static void yl1() {
+        int i = 1;
+        while (1 <= 10) {
+            System.out.println(1);
+            i = i + 1;
+        }
+    }
+
 }

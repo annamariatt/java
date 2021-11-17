@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pank</title>
+</head>
+<body>
+Kontonumber: <input id="kontonumber"/>
+Summa: <input id="amount"/>
+Kellelt: <input id="fromKontonumber"/>
+Kellele: <input id="toKontonumber"/>
+<button id="createAccountButton">loo konto</button>
+<button id="getBalanceButton">anna kontojääk</button>
+<button id="depositMoneyButton">kanna raha sisse</button>
+<button id="withdrawMoneyButton">võta raha välja</button>
+<button id="transferMoneyButton">kanna raha üle</button>
+Kontojääk: <input disabled id="getBalanceResult"/>
+Raha sisse kantud: <input disabled id="depositMoneyResult"/>
+Raha välja võetud: <input disabled id="withdrawMoneyResult"/>
+Ülekanne tehtud: <input disabled id="transferMoneyResult"/>
+<script>
+    let createAccountButton = document.getElementById("createAccountButton");
+    createAccountButton.onclick = function () {
+        let kontonumber = document.getElementById("kontonumber").value;
+        let url = "http://localhost:8080/pank?kontonumber=" + kontonumber;
+        fetch(url)
+            .then(response => response.text())
+            .then(function (response) {
+                document.getElementById("createAccountResult").value = response;
+            });
+    }
+    let getBalanceButton = document.getElementById("getBalanceButton");
+    getBalanceButton.onclick = function () {
+        let kontonumber = document.getElementById("kontonumber").value;
+        let url = "http://localhost:8080/pank2/getBalance?kontonumber=" + kontonumber;
+        fetch(url)
+            .then(response => response.text())
+            .then(function (response) {
+                document.getElementById("getBalanceResult").value = response;
+            })
+    }
+    let depositMoneyButton = document.getElementById("depositMoneyButton");
+    depositMoneyButton.onclick = function () {
+        let kontonumber = document.getElementById("kontonumber").value;
+
+        let amount = document.getElementById("amount").value;
+        let url = "http://localhost:8080/pank2/depositMoney?kontonumber=" + kontonumber + "&amount=" + summa;
+        fetch(url)
+            .then(response => response.text())
+            .then(function (response) {
+                document.getElementById("depositMoneyResult").value = response;
+            })
+    }
+    let withdrawMoneyButton = document.getElementById("withdrawMoneyButton");
+    withdrawMoneyButton.onclick = function () {
+        let kontonumber = document.getElementById("kontonumber").value;
+        let amount = document.getElementById("amount").value;
+        let url = "http://localhost:8080/pank2/withdrawMoney?kontonumber=" + kontonumber + "&amount=" + summa;
+        fetch(url)
+            .then(response => response.text())
+            .then(function (response) {
+                document.getElementById("withdrawMoneyResult").value = response;
+            })
+    }
+    let transferMoneyButton = document.getElementById("transferMoneyButton");
+    transferMoneyButton.onclick = function () {
+        let toKontonumber = document.getElementById("toKontonumber").value;
+        let fromKontonumber = document.getElementById("fromKontonumber").value;
+        let amount = document.getElementById("amount").value;
+        let url = "http://localhost:8080/pank2/transferMoney?toKontonumber=" + toKontonumber + "&fromKontonumber=" + fromKontonumber + "&amount=" + amount;
+        fetch(url)
+            .then(response => response.text())
+            .then(function (response) {
+                document.getElementById("transferMoneyResult").value = response;
+            })
+    }
+
+
+</script>
+
+</body>
+</html>

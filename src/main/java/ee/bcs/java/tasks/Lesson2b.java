@@ -9,15 +9,38 @@ public class Lesson2b {
     // TODO loe funktsiooni sisendiks on täisarvude massiiv
     // TODO tagasta massiiv mille elemendid on vastupidises järiekorras
     public static int[] reverseArray(int[] inputArray) {
-        return inputArray;
+        int[] newArray = new int[inputArray.length];
+        for (int i = 1; i < inputArray.length; i++) {
+            newArray[i] = inputArray[inputArray.length - i - 1];
+        }
+        return newArray;
     }
+
 
     // TODO tagasta massiiv mis sisaldab n esimest paaris arvu (n >= 0)
     // Näide:
-    // Sisend 5
-    // Väljund 2 4 6 8 10
+    // Sisend 5 numbrit (mitte nr5)
+    // Väljund e tagastada [2, 4, 6, 8, 10]
     public static int[] evenNumbers(int n) {
-        return new int[0];
+        int[] result = new int[n];
+        for (int i = 1; i <= n; i++) {
+            System.out.println(i * 2);
+            // see on esimene võimalik tsükkel
+            result[i - 1] = i * 2;
+        }
+        for (int i = 1; i <= n * 2; i++) {
+            if (i % 2 == 0) {
+                System.out.println(i);
+                //see on teine võimalik tsükkel
+                result[i / 2 - 1] = i;
+            }
+        }
+        for (int i = 2; i <= n * 2; i = i + 2) {
+            System.out.println(i);
+            //see on kolmas võimalik tsükkel
+            result[i / 2 - 1] = i;
+        }
+        return result;
         /*
         int[] array = new int[n];
         for(int i = 0; i < n; i++){
@@ -28,17 +51,35 @@ public class Lesson2b {
 
     // TODO, leia massiivi kõige väiksem element
     public static int min(int[] x) {
-        return 0;
+        int tmp = x[0];
+        for (int i = 1; i < x.length; i++) {
+            //kui x indeksil i on väiksem kui tmp, siis tmp-i uus väärtus on x indeksil
+            if (x[i] < tmp) {
+                tmp = x[i];
+            }
+        }
+        return tmp;
     }
 
     // TODO, leia massiivi kõige suurem element
     public static int max(int[] x) {
-        return 0;
+        int tmp = x[0];
+        for (int i = 1; i > x.length; i++) {
+            //kui x indeksil i on suurem kui tmp, siis tmp-i uus väärtus on x indeksil
+            if (x[i] > tmp) {
+                tmp = x[i];
+            }
+        }
+        return tmp;
     }
 
     // TODO, leia massiivi kõigi elementide summa
     public static int sum(int[] x) {
-        return 0;
+        int tmp = x[0];
+        for (int i = 1; i < x.length; i++) {
+            tmp = x[i] + tmp;
+        }
+            return tmp;
     }
 
     // TODO trüki välja korrutustabel mis on x ühikut lai ja y ühikut kõrge
